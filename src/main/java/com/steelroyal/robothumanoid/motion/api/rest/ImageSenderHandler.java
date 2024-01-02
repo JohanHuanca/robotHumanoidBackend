@@ -29,22 +29,22 @@ public class ImageSenderHandler extends BinaryWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) {
         sessions.add(session);
-        logger.warn("Nueva conexión WebSocket establecida: {}", session.getId());
+        //logger.warn("Nueva conexión WebSocket establecida: {}", session.getId());
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
         sessions.remove(session);
-        logger.warn("Conexión WebSocket cerrada: {}", session.getId());
+        //logger.warn("Conexión WebSocket cerrada: {}", session.getId());
     }
     private void sendImageToClients(BufferedImage image) {
-        logger.warn("Enviando imagen a {} clientes", sessions.size());
+        //logger.warn("Enviando imagen a {} clientes", sessions.size());
         try {
             byte[] imageBytes = convertBufferedImageToBytes(image);
 
             for (WebSocketSession session : sessions) {
                 if (session.isOpen()) {
-                    logger.warn("Enviando imagen al cliente: {}", session.getId());
+                    //logger.warn("Enviando imagen al cliente: {}", session.getId());
                     session.sendMessage(new BinaryMessage(imageBytes));
                 }
             }

@@ -21,13 +21,13 @@ public class ImageReceiverHandler extends BinaryWebSocketHandler {
     private final ImageService imageService;
     @Override
     protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) {
-        logger.warn("Mensaje binario recibido de tamaño: {}", message.getPayloadLength());
+        //logger.warn("Mensaje binario recibido de tamaño: {}", message.getPayloadLength());
 
         byte[] imageBytes = message.getPayload().array();
         BufferedImage image = convertToBufferedImage(imageBytes);
 
         if (image != null) {
-            logger.warn("Imagen convertida exitosamente, procesando imagen...");
+            //logger.warn("Imagen convertida exitosamente, procesando imagen...");
             imageService.processImage(image);
         } else {
             logger.error("La conversión de la imagen ha fallado.");

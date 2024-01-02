@@ -16,10 +16,10 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public void processImage(BufferedImage image) {
-        logger.warn("Procesando imagen recibida");
+        //logger.warn("Procesando imagen recibida");
         if (onImageProcessed != null) {
             onImageProcessed.accept(image);
-            logger.warn("Imagen procesada y aceptada por el consumidor");
+            //logger.warn("Imagen procesada y aceptada por el consumidor");
         } else {
             logger.error("No hay consumidor configurado para procesar la imagen");
         }
@@ -29,6 +29,6 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public void setOnImageProcessed(Consumer<BufferedImage> onImageProcessed) {
         this.onImageProcessed = onImageProcessed;
-        logger.warn("Consumidor de imágenes procesadas configurado");
+        //logger.warn("Consumidor de imágenes procesadas configurado");
     }
 }
